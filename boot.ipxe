@@ -1,0 +1,11 @@
+#!ipxe
+
+set base-url https://github.com/rancher/k3os/releases/download/v0.20.6-k3s1r0
+
+set ssh_authorized_keys "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC52iC8aow/cqrLMPx9XTrwujyqqQ0B0qLHjLDHFWRxNDJzP009j6TYERcV9vpqB6g6COU2N1aW6AgIYEm+S8FpGA3VupWeKCqdC+t5JII4uKrgjd5m0sPGY0wSEkUuOd76FjWJjf42hBQ41RThREH4+Bt4VA126WLvT3Zqri4lQFmF9TzS4nMH2bTtW5WlAMpwgxhilf9Q6nAKNlMZ+1jX3zcmvCz993qkP/nbWvA3O9QokFFEhhyUbcPrunazqCTw3OJgIzNH0tiCIjlU8C/T+N207El1sfOZWTajt1GTwxxhSLUSh598/BJIBHIJ8493cDFZAOh0VjA3kzSiWVv7vu8HzrAsIbn1aDJm2Sj1yOjp44an1w5VO2kM5vrVfI55fkI+bnGsV8S7iKtr/Q8782e4AN9vxKPrPrZHSCu+mzEf+7hgt2GET9d4yTHXrtFPctP8f7x94FBhe+R9eQmVqmdRXrv76/TTT3Ho0oYPXyE4MahZQIuBQ6J5fmEufsrKXwc6zKVnEoXcYkRjVVM0C3ZCDchBmWaURKpar63i2f6ExTXSghfitxxFBQHNwo9ApFiwFcULGpA2FecTnenEzrwTc3BJy00UhRkY/IDIvfrEd6/jbVpH/8ywLEGXVeTbPZNNGAEZpnnMciOkpmBaCt9SwmITmKCA9xeAcURyNw== Vultr"
+
+kernel ${base-url}/k3os-vmlinuz-amd64 k3os.mode=install k3os.install.silent k3os.install.iso_url=${base-url}/k3os-amd64.iso ssh_authorized_keys=${ssh_authorized_keys} hostname="dbqp-100" console=ttyS0 console=tty1 console=serial loglevel=4 k3os.debug printk.devkmsg=on 
+
+initrd ${base-url}/k3os-initrd-amd64
+
+boot
